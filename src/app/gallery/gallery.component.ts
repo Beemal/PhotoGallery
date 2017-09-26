@@ -1,4 +1,4 @@
-import {Component, OnChanges} from '@angular/core';
+import {Component, OnChanges, Input} from '@angular/core';
 import { ImageService} from '../image/shared/image.service';
 
 @Component({
@@ -7,11 +7,16 @@ import { ImageService} from '../image/shared/image.service';
     styleUrls: ['./gallery.component.css']
 })
 
-export class GalleryComponent{
+export class GalleryComponent implements OnChanges{
     title = "Recent Photos";
+
+    @Input() filterBy?:string = "all";
     visibleImages: any[] = [];  // empty array - array of anything
 
     constructor(private imageService: ImageService ){
+        this.visibleImages = this.imageService.getImages();
+    }
+    ngOnChanges(){
         this.visibleImages = this.imageService.getImages();
     }
 }
