@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import { ImageService} from './shared/image.service';
+import {Component, OnInit} from '@angular/core';
+import { ImageService } from './shared/image.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'image-detail',
@@ -7,8 +8,16 @@ import { ImageService} from './shared/image.service';
     styleUrls: ['./image-detail.component.css']
 })
 
-export class ImageDetailComponent{
-   constructor(private imageService: ImageService ){
+export class ImageDetailComponent implements OnInit{
+   image: any;
 
+
+    constructor(private imageService: ImageService, private route:ActivatedRoute){}
+
+   ngOnInit(){
+        this.image = this.imageService.getImage(
+            +this.route.snapshot.params['id']   // + sign is going to convert id to number
+            // this.route.snapshot will provide the initail value of routing params
+        )
    }
 }
