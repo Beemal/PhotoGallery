@@ -7,7 +7,7 @@ import { AlertModule } from 'ng2-bootstrap';
 
 import {NavbarComponent} from './navbar/navbar.component';
 import {GalleryComponent} from './gallery/gallery.component';
-
+import {ImageService} from './image/shared/image.service';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule, FormsModule, HttpModule, AlertModule
   ],
-  providers: [],
+  providers: [ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { ImageService} from './shared/image.service';
+
 @Component({
     selector: 'image-detail',
     templateUrl: './image-detail.component.html',
@@ -7,5 +8,7 @@ import { ImageService} from './shared/image.service';
 })
 
 export class ImageDetailComponent{
-   constructor(private imageService: ImageService )
+   constructor(private imageService: ImageService ){
+
+   }
 }
